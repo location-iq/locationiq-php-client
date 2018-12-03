@@ -32,10 +32,10 @@ $apiInstance = new LocationIq\Api\ReverseApi(
 );
 $lat = 17.24; // float | Latitude of the location to generate an address for.
 $lon = 74.25; // float | Longitude of the location to generate an address for.
-$format = json; // string | Format to geocode. Only JSON supported for SDKs
+$format = "json"; // string | Format to geocode. Only JSON supported for SDKs
 $normalizecity = 1; // int | Normalizes village to city level data to city
 $addressdetails = 1; // int | Include a breakdown of the address into elements. Defaults to 1.
-$accept_language = en; // string | Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language=native
+$accept_language = "en"; // string | Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language=native
 $namedetails = 0; // int | Include a list of alternative names in the results. These may include language variants, references, operator and brand.
 $extratags = 0; // int | Include additional information in the result if available, e.g. wikipedia link, opening hours.
 
