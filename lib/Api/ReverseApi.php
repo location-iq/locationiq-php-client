@@ -100,14 +100,15 @@ class ReverseApi
      * @param  string $accept_language Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
      * @param  int $namedetails Include a list of alternative names in the results. These may include language variants, references, operator and brand. (optional)
      * @param  int $extratags Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
+     * @param  int $statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
      *
      * @throws \LocationIq\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \LocationIq\Model\Location|\LocationIq\Model\Error|\LocationIq\Model\Error|\LocationIq\Model\Error|\LocationIq\Model\Error|\LocationIq\Model\Error
      */
-    public function reverse($lat, $lon, $format, $normalizecity, $addressdetails = 1, $accept_language = null, $namedetails = null, $extratags = null)
+    public function reverse($lat, $lon, $format, $normalizecity, $addressdetails = 1, $accept_language = null, $namedetails = null, $extratags = null, $statecode = null)
     {
-        list($response) = $this->reverseWithHttpInfo($lat, $lon, $format, $normalizecity, $addressdetails, $accept_language, $namedetails, $extratags);
+        list($response) = $this->reverseWithHttpInfo($lat, $lon, $format, $normalizecity, $addressdetails, $accept_language, $namedetails, $extratags, $statecode);
         return $response;
     }
 
@@ -124,14 +125,15 @@ class ReverseApi
      * @param  string $accept_language Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
      * @param  int $namedetails Include a list of alternative names in the results. These may include language variants, references, operator and brand. (optional)
      * @param  int $extratags Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
+     * @param  int $statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
      *
      * @throws \LocationIq\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \LocationIq\Model\Location|\LocationIq\Model\Error|\LocationIq\Model\Error|\LocationIq\Model\Error|\LocationIq\Model\Error|\LocationIq\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function reverseWithHttpInfo($lat, $lon, $format, $normalizecity, $addressdetails = 1, $accept_language = null, $namedetails = null, $extratags = null)
+    public function reverseWithHttpInfo($lat, $lon, $format, $normalizecity, $addressdetails = 1, $accept_language = null, $namedetails = null, $extratags = null, $statecode = null)
     {
-        $request = $this->reverseRequest($lat, $lon, $format, $normalizecity, $addressdetails, $accept_language, $namedetails, $extratags);
+        $request = $this->reverseRequest($lat, $lon, $format, $normalizecity, $addressdetails, $accept_language, $namedetails, $extratags, $statecode);
 
         try {
             $options = $this->createHttpClientOption();
@@ -340,13 +342,14 @@ class ReverseApi
      * @param  string $accept_language Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
      * @param  int $namedetails Include a list of alternative names in the results. These may include language variants, references, operator and brand. (optional)
      * @param  int $extratags Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
+     * @param  int $statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function reverseAsync($lat, $lon, $format, $normalizecity, $addressdetails = 1, $accept_language = null, $namedetails = null, $extratags = null)
+    public function reverseAsync($lat, $lon, $format, $normalizecity, $addressdetails = 1, $accept_language = null, $namedetails = null, $extratags = null, $statecode = null)
     {
-        return $this->reverseAsyncWithHttpInfo($lat, $lon, $format, $normalizecity, $addressdetails, $accept_language, $namedetails, $extratags)
+        return $this->reverseAsyncWithHttpInfo($lat, $lon, $format, $normalizecity, $addressdetails, $accept_language, $namedetails, $extratags, $statecode)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -367,14 +370,15 @@ class ReverseApi
      * @param  string $accept_language Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
      * @param  int $namedetails Include a list of alternative names in the results. These may include language variants, references, operator and brand. (optional)
      * @param  int $extratags Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
+     * @param  int $statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function reverseAsyncWithHttpInfo($lat, $lon, $format, $normalizecity, $addressdetails = 1, $accept_language = null, $namedetails = null, $extratags = null)
+    public function reverseAsyncWithHttpInfo($lat, $lon, $format, $normalizecity, $addressdetails = 1, $accept_language = null, $namedetails = null, $extratags = null, $statecode = null)
     {
         $returnType = '\LocationIq\Model\Location';
-        $request = $this->reverseRequest($lat, $lon, $format, $normalizecity, $addressdetails, $accept_language, $namedetails, $extratags);
+        $request = $this->reverseRequest($lat, $lon, $format, $normalizecity, $addressdetails, $accept_language, $namedetails, $extratags, $statecode);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -424,11 +428,12 @@ class ReverseApi
      * @param  string $accept_language Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
      * @param  int $namedetails Include a list of alternative names in the results. These may include language variants, references, operator and brand. (optional)
      * @param  int $extratags Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
+     * @param  int $statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function reverseRequest($lat, $lon, $format, $normalizecity, $addressdetails = 1, $accept_language = null, $namedetails = null, $extratags = null)
+    protected function reverseRequest($lat, $lon, $format, $normalizecity, $addressdetails = 1, $accept_language = null, $namedetails = null, $extratags = null, $statecode = null)
     {
         // verify the required parameter 'lat' is set
         if ($lat === null || (is_array($lat) && count($lat) === 0)) {
@@ -507,6 +512,10 @@ class ReverseApi
         // query params
         if ($extratags !== null) {
             $queryParams['extratags'] = ObjectSerializer::toQueryValue($extratags);
+        }
+        // query params
+        if ($statecode !== null) {
+            $queryParams['statecode'] = ObjectSerializer::toQueryValue($statecode);
         }
 
 

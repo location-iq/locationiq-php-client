@@ -60,13 +60,23 @@ class Address implements ModelInterface, ArrayAccess
         'house_number' => 'string',
         'road' => 'string',
         'residential' => 'string',
+        'borough' => 'string',
+        'neighbourhood' => 'string',
+        'quarter' => 'string',
+        'hamlet' => 'string',
+        'suburb' => 'string',
+        'island' => 'string',
         'village' => 'string',
+        'town' => 'string',
+        'city' => 'string',
+        'city_district' => 'string',
         'county' => 'string',
         'state' => 'string',
+        'state_district' => 'string',
         'postcode' => 'string',
         'country' => 'string',
         'country_code' => 'string',
-        'city' => 'string'
+        'state_code' => 'string'
     ];
 
     /**
@@ -78,13 +88,23 @@ class Address implements ModelInterface, ArrayAccess
         'house_number' => null,
         'road' => null,
         'residential' => null,
+        'borough' => null,
+        'neighbourhood' => null,
+        'quarter' => null,
+        'hamlet' => null,
+        'suburb' => null,
+        'island' => null,
         'village' => null,
+        'town' => null,
+        'city' => null,
+        'city_district' => null,
         'county' => null,
         'state' => null,
+        'state_district' => null,
         'postcode' => null,
         'country' => null,
         'country_code' => null,
-        'city' => null
+        'state_code' => null
     ];
 
     /**
@@ -117,13 +137,23 @@ class Address implements ModelInterface, ArrayAccess
         'house_number' => 'house_number',
         'road' => 'road',
         'residential' => 'residential',
+        'borough' => 'borough',
+        'neighbourhood' => 'neighbourhood',
+        'quarter' => 'quarter',
+        'hamlet' => 'hamlet',
+        'suburb' => 'suburb',
+        'island' => 'island',
         'village' => 'village',
+        'town' => 'town',
+        'city' => 'city',
+        'city_district' => 'city_district',
         'county' => 'county',
         'state' => 'state',
+        'state_district' => 'state_district',
         'postcode' => 'postcode',
         'country' => 'country',
         'country_code' => 'country_code',
-        'city' => 'city'
+        'state_code' => 'state_code'
     ];
 
     /**
@@ -135,13 +165,23 @@ class Address implements ModelInterface, ArrayAccess
         'house_number' => 'setHouseNumber',
         'road' => 'setRoad',
         'residential' => 'setResidential',
+        'borough' => 'setBorough',
+        'neighbourhood' => 'setNeighbourhood',
+        'quarter' => 'setQuarter',
+        'hamlet' => 'setHamlet',
+        'suburb' => 'setSuburb',
+        'island' => 'setIsland',
         'village' => 'setVillage',
+        'town' => 'setTown',
+        'city' => 'setCity',
+        'city_district' => 'setCityDistrict',
         'county' => 'setCounty',
         'state' => 'setState',
+        'state_district' => 'setStateDistrict',
         'postcode' => 'setPostcode',
         'country' => 'setCountry',
         'country_code' => 'setCountryCode',
-        'city' => 'setCity'
+        'state_code' => 'setStateCode'
     ];
 
     /**
@@ -153,13 +193,23 @@ class Address implements ModelInterface, ArrayAccess
         'house_number' => 'getHouseNumber',
         'road' => 'getRoad',
         'residential' => 'getResidential',
+        'borough' => 'getBorough',
+        'neighbourhood' => 'getNeighbourhood',
+        'quarter' => 'getQuarter',
+        'hamlet' => 'getHamlet',
+        'suburb' => 'getSuburb',
+        'island' => 'getIsland',
         'village' => 'getVillage',
+        'town' => 'getTown',
+        'city' => 'getCity',
+        'city_district' => 'getCityDistrict',
         'county' => 'getCounty',
         'state' => 'getState',
+        'state_district' => 'getStateDistrict',
         'postcode' => 'getPostcode',
         'country' => 'getCountry',
         'country_code' => 'getCountryCode',
-        'city' => 'getCity'
+        'state_code' => 'getStateCode'
     ];
 
     /**
@@ -225,13 +275,23 @@ class Address implements ModelInterface, ArrayAccess
         $this->container['house_number'] = isset($data['house_number']) ? $data['house_number'] : null;
         $this->container['road'] = isset($data['road']) ? $data['road'] : null;
         $this->container['residential'] = isset($data['residential']) ? $data['residential'] : null;
+        $this->container['borough'] = isset($data['borough']) ? $data['borough'] : null;
+        $this->container['neighbourhood'] = isset($data['neighbourhood']) ? $data['neighbourhood'] : null;
+        $this->container['quarter'] = isset($data['quarter']) ? $data['quarter'] : null;
+        $this->container['hamlet'] = isset($data['hamlet']) ? $data['hamlet'] : null;
+        $this->container['suburb'] = isset($data['suburb']) ? $data['suburb'] : null;
+        $this->container['island'] = isset($data['island']) ? $data['island'] : null;
         $this->container['village'] = isset($data['village']) ? $data['village'] : null;
+        $this->container['town'] = isset($data['town']) ? $data['town'] : null;
+        $this->container['city'] = isset($data['city']) ? $data['city'] : null;
+        $this->container['city_district'] = isset($data['city_district']) ? $data['city_district'] : null;
         $this->container['county'] = isset($data['county']) ? $data['county'] : null;
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
+        $this->container['state_district'] = isset($data['state_district']) ? $data['state_district'] : null;
         $this->container['postcode'] = isset($data['postcode']) ? $data['postcode'] : null;
         $this->container['country'] = isset($data['country']) ? $data['country'] : null;
         $this->container['country_code'] = isset($data['country_code']) ? $data['country_code'] : null;
-        $this->container['city'] = isset($data['city']) ? $data['city'] : null;
+        $this->container['state_code'] = isset($data['state_code']) ? $data['state_code'] : null;
     }
 
     /**
@@ -331,6 +391,150 @@ class Address implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets borough
+     *
+     * @return string|null
+     */
+    public function getBorough()
+    {
+        return $this->container['borough'];
+    }
+
+    /**
+     * Sets borough
+     *
+     * @param string|null $borough borough
+     *
+     * @return $this
+     */
+    public function setBorough($borough)
+    {
+        $this->container['borough'] = $borough;
+
+        return $this;
+    }
+
+    /**
+     * Gets neighbourhood
+     *
+     * @return string|null
+     */
+    public function getNeighbourhood()
+    {
+        return $this->container['neighbourhood'];
+    }
+
+    /**
+     * Sets neighbourhood
+     *
+     * @param string|null $neighbourhood neighbourhood
+     *
+     * @return $this
+     */
+    public function setNeighbourhood($neighbourhood)
+    {
+        $this->container['neighbourhood'] = $neighbourhood;
+
+        return $this;
+    }
+
+    /**
+     * Gets quarter
+     *
+     * @return string|null
+     */
+    public function getQuarter()
+    {
+        return $this->container['quarter'];
+    }
+
+    /**
+     * Sets quarter
+     *
+     * @param string|null $quarter quarter
+     *
+     * @return $this
+     */
+    public function setQuarter($quarter)
+    {
+        $this->container['quarter'] = $quarter;
+
+        return $this;
+    }
+
+    /**
+     * Gets hamlet
+     *
+     * @return string|null
+     */
+    public function getHamlet()
+    {
+        return $this->container['hamlet'];
+    }
+
+    /**
+     * Sets hamlet
+     *
+     * @param string|null $hamlet hamlet
+     *
+     * @return $this
+     */
+    public function setHamlet($hamlet)
+    {
+        $this->container['hamlet'] = $hamlet;
+
+        return $this;
+    }
+
+    /**
+     * Gets suburb
+     *
+     * @return string|null
+     */
+    public function getSuburb()
+    {
+        return $this->container['suburb'];
+    }
+
+    /**
+     * Sets suburb
+     *
+     * @param string|null $suburb suburb
+     *
+     * @return $this
+     */
+    public function setSuburb($suburb)
+    {
+        $this->container['suburb'] = $suburb;
+
+        return $this;
+    }
+
+    /**
+     * Gets island
+     *
+     * @return string|null
+     */
+    public function getIsland()
+    {
+        return $this->container['island'];
+    }
+
+    /**
+     * Sets island
+     *
+     * @param string|null $island island
+     *
+     * @return $this
+     */
+    public function setIsland($island)
+    {
+        $this->container['island'] = $island;
+
+        return $this;
+    }
+
+    /**
      * Gets village
      *
      * @return string|null
@@ -350,6 +554,78 @@ class Address implements ModelInterface, ArrayAccess
     public function setVillage($village)
     {
         $this->container['village'] = $village;
+
+        return $this;
+    }
+
+    /**
+     * Gets town
+     *
+     * @return string|null
+     */
+    public function getTown()
+    {
+        return $this->container['town'];
+    }
+
+    /**
+     * Sets town
+     *
+     * @param string|null $town town
+     *
+     * @return $this
+     */
+    public function setTown($town)
+    {
+        $this->container['town'] = $town;
+
+        return $this;
+    }
+
+    /**
+     * Gets city
+     *
+     * @return string|null
+     */
+    public function getCity()
+    {
+        return $this->container['city'];
+    }
+
+    /**
+     * Sets city
+     *
+     * @param string|null $city city
+     *
+     * @return $this
+     */
+    public function setCity($city)
+    {
+        $this->container['city'] = $city;
+
+        return $this;
+    }
+
+    /**
+     * Gets city_district
+     *
+     * @return string|null
+     */
+    public function getCityDistrict()
+    {
+        return $this->container['city_district'];
+    }
+
+    /**
+     * Sets city_district
+     *
+     * @param string|null $city_district city_district
+     *
+     * @return $this
+     */
+    public function setCityDistrict($city_district)
+    {
+        $this->container['city_district'] = $city_district;
 
         return $this;
     }
@@ -398,6 +674,30 @@ class Address implements ModelInterface, ArrayAccess
     public function setState($state)
     {
         $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Gets state_district
+     *
+     * @return string|null
+     */
+    public function getStateDistrict()
+    {
+        return $this->container['state_district'];
+    }
+
+    /**
+     * Sets state_district
+     *
+     * @param string|null $state_district state_district
+     *
+     * @return $this
+     */
+    public function setStateDistrict($state_district)
+    {
+        $this->container['state_district'] = $state_district;
 
         return $this;
     }
@@ -475,25 +775,25 @@ class Address implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets city
+     * Gets state_code
      *
      * @return string|null
      */
-    public function getCity()
+    public function getStateCode()
     {
-        return $this->container['city'];
+        return $this->container['state_code'];
     }
 
     /**
-     * Sets city
+     * Sets state_code
      *
-     * @param string|null $city city
+     * @param string|null $state_code state_code
      *
      * @return $this
      */
-    public function setCity($city)
+    public function setStateCode($state_code)
     {
-        $this->container['city'] = $city;
+        $this->container['state_code'] = $state_code;
 
         return $this;
     }

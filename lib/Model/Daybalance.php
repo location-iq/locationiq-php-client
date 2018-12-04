@@ -57,7 +57,8 @@ class Daybalance implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'day' => 'int'
+        'day' => 'int',
+        'bonus' => 'int'
     ];
 
     /**
@@ -66,7 +67,8 @@ class Daybalance implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'day' => 'int32'
+        'day' => 'int32',
+        'bonus' => 'int32'
     ];
 
     /**
@@ -96,7 +98,8 @@ class Daybalance implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'day' => 'day'
+        'day' => 'day',
+        'bonus' => 'bonus'
     ];
 
     /**
@@ -105,7 +108,8 @@ class Daybalance implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'day' => 'setDay'
+        'day' => 'setDay',
+        'bonus' => 'setBonus'
     ];
 
     /**
@@ -114,7 +118,8 @@ class Daybalance implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'day' => 'getDay'
+        'day' => 'getDay',
+        'bonus' => 'getBonus'
     ];
 
     /**
@@ -178,6 +183,7 @@ class Daybalance implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['day'] = isset($data['day']) ? $data['day'] : null;
+        $this->container['bonus'] = isset($data['bonus']) ? $data['bonus'] : null;
     }
 
     /**
@@ -224,6 +230,30 @@ class Daybalance implements ModelInterface, ArrayAccess
     public function setDay($day)
     {
         $this->container['day'] = $day;
+
+        return $this;
+    }
+
+    /**
+     * Gets bonus
+     *
+     * @return int|null
+     */
+    public function getBonus()
+    {
+        return $this->container['bonus'];
+    }
+
+    /**
+     * Sets bonus
+     *
+     * @param int|null $bonus bonus
+     *
+     * @return $this
+     */
+    public function setBonus($bonus)
+    {
+        $this->container['bonus'] = $bonus;
 
         return $this;
     }

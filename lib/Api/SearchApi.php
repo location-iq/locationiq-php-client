@@ -96,7 +96,7 @@ class SearchApi
      * @param  string $format Format to geocode. Only JSON supported for SDKs (required)
      * @param  int $normalizecity For responses with no city value in the address section, the next available element in this order - city_district, locality, town, borough, municipality, village, hamlet, quarter, neighbourhood - from the address section will be normalized to city. Defaults to 1 for SDKs. (required)
      * @param  int $addressdetails Include a breakdown of the address into elements. Defaults to 0. (optional)
-     * @param  string $viewbox The preferred area to find search results.  To restrict results to those within the viewbox, use along with the bounded option. (optional)
+     * @param  string $viewbox The preferred area to find search results.  To restrict results to those within the viewbox, use along with the bounded option. Tuple of 4 floats. Any two corner points of the box - &#x60;max_lon,max_lat,min_lon,min_lat&#x60; or &#x60;min_lon,min_lat,max_lon,max_lat&#x60; - are accepted in any order as long as they span a real box. (optional)
      * @param  int $bounded Restrict the results to only items contained with the viewbox (optional)
      * @param  int $limit Limit the number of returned results. Default is 10. (optional, default to 10)
      * @param  string $accept_language Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
@@ -104,14 +104,15 @@ class SearchApi
      * @param  int $namedetails Include a list of alternative names in the results. These may include language variants, references, operator and brand. (optional)
      * @param  int $dedupe Sometimes you have several objects in OSM identifying the same place or object in reality. The simplest case is a street being split in many different OSM ways due to different characteristics. Nominatim will attempt to detect such duplicates and only return one match; this is controlled by the dedupe parameter which defaults to 1. Since the limit is, for reasons of efficiency, enforced before and not after de-duplicating, it is possible that de-duplicating leaves you with less results than requested. (optional)
      * @param  int $extratags Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
+     * @param  int $statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
      *
      * @throws \LocationIq\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \LocationIq\Model\Location[]|\LocationIq\Model\Error|\LocationIq\Model\Error|\LocationIq\Model\Error|\LocationIq\Model\Error|\LocationIq\Model\Error
      */
-    public function search($q, $format, $normalizecity, $addressdetails = null, $viewbox = null, $bounded = null, $limit = 10, $accept_language = null, $countrycodes = null, $namedetails = null, $dedupe = null, $extratags = null)
+    public function search($q, $format, $normalizecity, $addressdetails = null, $viewbox = null, $bounded = null, $limit = 10, $accept_language = null, $countrycodes = null, $namedetails = null, $dedupe = null, $extratags = null, $statecode = null)
     {
-        list($response) = $this->searchWithHttpInfo($q, $format, $normalizecity, $addressdetails, $viewbox, $bounded, $limit, $accept_language, $countrycodes, $namedetails, $dedupe, $extratags);
+        list($response) = $this->searchWithHttpInfo($q, $format, $normalizecity, $addressdetails, $viewbox, $bounded, $limit, $accept_language, $countrycodes, $namedetails, $dedupe, $extratags, $statecode);
         return $response;
     }
 
@@ -124,7 +125,7 @@ class SearchApi
      * @param  string $format Format to geocode. Only JSON supported for SDKs (required)
      * @param  int $normalizecity For responses with no city value in the address section, the next available element in this order - city_district, locality, town, borough, municipality, village, hamlet, quarter, neighbourhood - from the address section will be normalized to city. Defaults to 1 for SDKs. (required)
      * @param  int $addressdetails Include a breakdown of the address into elements. Defaults to 0. (optional)
-     * @param  string $viewbox The preferred area to find search results.  To restrict results to those within the viewbox, use along with the bounded option. (optional)
+     * @param  string $viewbox The preferred area to find search results.  To restrict results to those within the viewbox, use along with the bounded option. Tuple of 4 floats. Any two corner points of the box - &#x60;max_lon,max_lat,min_lon,min_lat&#x60; or &#x60;min_lon,min_lat,max_lon,max_lat&#x60; - are accepted in any order as long as they span a real box. (optional)
      * @param  int $bounded Restrict the results to only items contained with the viewbox (optional)
      * @param  int $limit Limit the number of returned results. Default is 10. (optional, default to 10)
      * @param  string $accept_language Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
@@ -132,14 +133,15 @@ class SearchApi
      * @param  int $namedetails Include a list of alternative names in the results. These may include language variants, references, operator and brand. (optional)
      * @param  int $dedupe Sometimes you have several objects in OSM identifying the same place or object in reality. The simplest case is a street being split in many different OSM ways due to different characteristics. Nominatim will attempt to detect such duplicates and only return one match; this is controlled by the dedupe parameter which defaults to 1. Since the limit is, for reasons of efficiency, enforced before and not after de-duplicating, it is possible that de-duplicating leaves you with less results than requested. (optional)
      * @param  int $extratags Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
+     * @param  int $statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
      *
      * @throws \LocationIq\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \LocationIq\Model\Location[]|\LocationIq\Model\Error|\LocationIq\Model\Error|\LocationIq\Model\Error|\LocationIq\Model\Error|\LocationIq\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchWithHttpInfo($q, $format, $normalizecity, $addressdetails = null, $viewbox = null, $bounded = null, $limit = 10, $accept_language = null, $countrycodes = null, $namedetails = null, $dedupe = null, $extratags = null)
+    public function searchWithHttpInfo($q, $format, $normalizecity, $addressdetails = null, $viewbox = null, $bounded = null, $limit = 10, $accept_language = null, $countrycodes = null, $namedetails = null, $dedupe = null, $extratags = null, $statecode = null)
     {
-        $request = $this->searchRequest($q, $format, $normalizecity, $addressdetails, $viewbox, $bounded, $limit, $accept_language, $countrycodes, $namedetails, $dedupe, $extratags);
+        $request = $this->searchRequest($q, $format, $normalizecity, $addressdetails, $viewbox, $bounded, $limit, $accept_language, $countrycodes, $namedetails, $dedupe, $extratags, $statecode);
 
         try {
             $options = $this->createHttpClientOption();
@@ -344,7 +346,7 @@ class SearchApi
      * @param  string $format Format to geocode. Only JSON supported for SDKs (required)
      * @param  int $normalizecity For responses with no city value in the address section, the next available element in this order - city_district, locality, town, borough, municipality, village, hamlet, quarter, neighbourhood - from the address section will be normalized to city. Defaults to 1 for SDKs. (required)
      * @param  int $addressdetails Include a breakdown of the address into elements. Defaults to 0. (optional)
-     * @param  string $viewbox The preferred area to find search results.  To restrict results to those within the viewbox, use along with the bounded option. (optional)
+     * @param  string $viewbox The preferred area to find search results.  To restrict results to those within the viewbox, use along with the bounded option. Tuple of 4 floats. Any two corner points of the box - &#x60;max_lon,max_lat,min_lon,min_lat&#x60; or &#x60;min_lon,min_lat,max_lon,max_lat&#x60; - are accepted in any order as long as they span a real box. (optional)
      * @param  int $bounded Restrict the results to only items contained with the viewbox (optional)
      * @param  int $limit Limit the number of returned results. Default is 10. (optional, default to 10)
      * @param  string $accept_language Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
@@ -352,13 +354,14 @@ class SearchApi
      * @param  int $namedetails Include a list of alternative names in the results. These may include language variants, references, operator and brand. (optional)
      * @param  int $dedupe Sometimes you have several objects in OSM identifying the same place or object in reality. The simplest case is a street being split in many different OSM ways due to different characteristics. Nominatim will attempt to detect such duplicates and only return one match; this is controlled by the dedupe parameter which defaults to 1. Since the limit is, for reasons of efficiency, enforced before and not after de-duplicating, it is possible that de-duplicating leaves you with less results than requested. (optional)
      * @param  int $extratags Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
+     * @param  int $statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAsync($q, $format, $normalizecity, $addressdetails = null, $viewbox = null, $bounded = null, $limit = 10, $accept_language = null, $countrycodes = null, $namedetails = null, $dedupe = null, $extratags = null)
+    public function searchAsync($q, $format, $normalizecity, $addressdetails = null, $viewbox = null, $bounded = null, $limit = 10, $accept_language = null, $countrycodes = null, $namedetails = null, $dedupe = null, $extratags = null, $statecode = null)
     {
-        return $this->searchAsyncWithHttpInfo($q, $format, $normalizecity, $addressdetails, $viewbox, $bounded, $limit, $accept_language, $countrycodes, $namedetails, $dedupe, $extratags)
+        return $this->searchAsyncWithHttpInfo($q, $format, $normalizecity, $addressdetails, $viewbox, $bounded, $limit, $accept_language, $countrycodes, $namedetails, $dedupe, $extratags, $statecode)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -375,7 +378,7 @@ class SearchApi
      * @param  string $format Format to geocode. Only JSON supported for SDKs (required)
      * @param  int $normalizecity For responses with no city value in the address section, the next available element in this order - city_district, locality, town, borough, municipality, village, hamlet, quarter, neighbourhood - from the address section will be normalized to city. Defaults to 1 for SDKs. (required)
      * @param  int $addressdetails Include a breakdown of the address into elements. Defaults to 0. (optional)
-     * @param  string $viewbox The preferred area to find search results.  To restrict results to those within the viewbox, use along with the bounded option. (optional)
+     * @param  string $viewbox The preferred area to find search results.  To restrict results to those within the viewbox, use along with the bounded option. Tuple of 4 floats. Any two corner points of the box - &#x60;max_lon,max_lat,min_lon,min_lat&#x60; or &#x60;min_lon,min_lat,max_lon,max_lat&#x60; - are accepted in any order as long as they span a real box. (optional)
      * @param  int $bounded Restrict the results to only items contained with the viewbox (optional)
      * @param  int $limit Limit the number of returned results. Default is 10. (optional, default to 10)
      * @param  string $accept_language Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
@@ -383,14 +386,15 @@ class SearchApi
      * @param  int $namedetails Include a list of alternative names in the results. These may include language variants, references, operator and brand. (optional)
      * @param  int $dedupe Sometimes you have several objects in OSM identifying the same place or object in reality. The simplest case is a street being split in many different OSM ways due to different characteristics. Nominatim will attempt to detect such duplicates and only return one match; this is controlled by the dedupe parameter which defaults to 1. Since the limit is, for reasons of efficiency, enforced before and not after de-duplicating, it is possible that de-duplicating leaves you with less results than requested. (optional)
      * @param  int $extratags Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
+     * @param  int $statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAsyncWithHttpInfo($q, $format, $normalizecity, $addressdetails = null, $viewbox = null, $bounded = null, $limit = 10, $accept_language = null, $countrycodes = null, $namedetails = null, $dedupe = null, $extratags = null)
+    public function searchAsyncWithHttpInfo($q, $format, $normalizecity, $addressdetails = null, $viewbox = null, $bounded = null, $limit = 10, $accept_language = null, $countrycodes = null, $namedetails = null, $dedupe = null, $extratags = null, $statecode = null)
     {
         $returnType = '\LocationIq\Model\Location[]';
-        $request = $this->searchRequest($q, $format, $normalizecity, $addressdetails, $viewbox, $bounded, $limit, $accept_language, $countrycodes, $namedetails, $dedupe, $extratags);
+        $request = $this->searchRequest($q, $format, $normalizecity, $addressdetails, $viewbox, $bounded, $limit, $accept_language, $countrycodes, $namedetails, $dedupe, $extratags, $statecode);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -436,7 +440,7 @@ class SearchApi
      * @param  string $format Format to geocode. Only JSON supported for SDKs (required)
      * @param  int $normalizecity For responses with no city value in the address section, the next available element in this order - city_district, locality, town, borough, municipality, village, hamlet, quarter, neighbourhood - from the address section will be normalized to city. Defaults to 1 for SDKs. (required)
      * @param  int $addressdetails Include a breakdown of the address into elements. Defaults to 0. (optional)
-     * @param  string $viewbox The preferred area to find search results.  To restrict results to those within the viewbox, use along with the bounded option. (optional)
+     * @param  string $viewbox The preferred area to find search results.  To restrict results to those within the viewbox, use along with the bounded option. Tuple of 4 floats. Any two corner points of the box - &#x60;max_lon,max_lat,min_lon,min_lat&#x60; or &#x60;min_lon,min_lat,max_lon,max_lat&#x60; - are accepted in any order as long as they span a real box. (optional)
      * @param  int $bounded Restrict the results to only items contained with the viewbox (optional)
      * @param  int $limit Limit the number of returned results. Default is 10. (optional, default to 10)
      * @param  string $accept_language Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
@@ -444,11 +448,12 @@ class SearchApi
      * @param  int $namedetails Include a list of alternative names in the results. These may include language variants, references, operator and brand. (optional)
      * @param  int $dedupe Sometimes you have several objects in OSM identifying the same place or object in reality. The simplest case is a street being split in many different OSM ways due to different characteristics. Nominatim will attempt to detect such duplicates and only return one match; this is controlled by the dedupe parameter which defaults to 1. Since the limit is, for reasons of efficiency, enforced before and not after de-duplicating, it is possible that de-duplicating leaves you with less results than requested. (optional)
      * @param  int $extratags Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
+     * @param  int $statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function searchRequest($q, $format, $normalizecity, $addressdetails = null, $viewbox = null, $bounded = null, $limit = 10, $accept_language = null, $countrycodes = null, $namedetails = null, $dedupe = null, $extratags = null)
+    protected function searchRequest($q, $format, $normalizecity, $addressdetails = null, $viewbox = null, $bounded = null, $limit = 10, $accept_language = null, $countrycodes = null, $namedetails = null, $dedupe = null, $extratags = null, $statecode = null)
     {
         // verify the required parameter 'q' is set
         if ($q === null || (is_array($q) && count($q) === 0)) {
@@ -523,6 +528,10 @@ class SearchApi
         // query params
         if ($extratags !== null) {
             $queryParams['extratags'] = ObjectSerializer::toQueryValue($extratags);
+        }
+        // query params
+        if ($statecode !== null) {
+            $queryParams['statecode'] = ObjectSerializer::toQueryValue($statecode);
         }
 
 
