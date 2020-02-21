@@ -1,4 +1,4 @@
-# LocationIq\SearchApi
+# OpenAPI\Client\SearchApi
 
 All URIs are relative to *https://eu1.locationiq.com/v1*
 
@@ -7,24 +7,29 @@ Method | HTTP request | Description
 [**search**](SearchApi.md#search) | **GET** /search.php | Forward Geocoding
 
 
-# **search**
-> \LocationIq\Model\Location[] search($q, $format, $normalizecity, $addressdetails, $viewbox, $bounded, $limit, $accept_language, $countrycodes, $namedetails, $dedupe, $extratags, $statecode)
+
+## search
+
+> \OpenAPI\Client\Model\Location[] search($q, $format, $normalizecity, $addressdetails, $viewbox, $bounded, $limit, $accept_language, $countrycodes, $namedetails, $dedupe, $extratags, $statecode, $matchquality, $postaladdress)
 
 Forward Geocoding
 
 The Search API allows converting addresses, such as a street address, into geographic coordinates (latitude and longitude). These coordinates can serve various use-cases, from placing markers on a map to helping algorithms determine nearby bus stops. This process is also known as Forward Geocoding.
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: key
-$config = LocationIq\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LocationIq\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
 
-$apiInstance = new LocationIq\Api\SearchApi(
+// Configure API key authorization: key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
+
+
+$apiInstance = new OpenAPI\Client\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -43,9 +48,11 @@ $namedetails = 1; // int | Include a list of alternative names in the results. T
 $dedupe = 1; // int | Sometimes you have several objects in OSM identifying the same place or object in reality. The simplest case is a street being split in many different OSM ways due to different characteristics. Nominatim will attempt to detect such duplicates and only return one match; this is controlled by the dedupe parameter which defaults to 1. Since the limit is, for reasons of efficiency, enforced before and not after de-duplicating, it is possible that de-duplicating leaves you with less results than requested.
 $extratags = 0; // int | Include additional information in the result if available, e.g. wikipedia link, opening hours.
 $statecode = 0; // int | Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0
+$matchquality = 0; // int | Returns additional information about quality of the result in a matchquality object. Read more Defaults to 0 [0,1]
+$postaladdress = 0; // int | Returns address inside the postaladdress key, that is specifically formatted for each country. Currently supported for addresses in Germany. Defaults to 0 [0,1]
 
 try {
-    $result = $apiInstance->search($q, $format, $normalizecity, $addressdetails, $viewbox, $bounded, $limit, $accept_language, $countrycodes, $namedetails, $dedupe, $extratags, $statecode);
+    $result = $apiInstance->search($q, $format, $normalizecity, $addressdetails, $viewbox, $bounded, $limit, $accept_language, $countrycodes, $namedetails, $dedupe, $extratags, $statecode, $matchquality, $postaladdress);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SearchApi->search: ', $e->getMessage(), PHP_EOL;
@@ -54,6 +61,7 @@ try {
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -70,10 +78,12 @@ Name | Type | Description  | Notes
  **dedupe** | **int**| Sometimes you have several objects in OSM identifying the same place or object in reality. The simplest case is a street being split in many different OSM ways due to different characteristics. Nominatim will attempt to detect such duplicates and only return one match; this is controlled by the dedupe parameter which defaults to 1. Since the limit is, for reasons of efficiency, enforced before and not after de-duplicating, it is possible that de-duplicating leaves you with less results than requested. | [optional]
  **extratags** | **int**| Include additional information in the result if available, e.g. wikipedia link, opening hours. | [optional]
  **statecode** | **int**| Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 | [optional]
+ **matchquality** | **int**| Returns additional information about quality of the result in a matchquality object. Read more Defaults to 0 [0,1] | [optional]
+ **postaladdress** | **int**| Returns address inside the postaladdress key, that is specifically formatted for each country. Currently supported for addresses in Germany. Defaults to 0 [0,1] | [optional]
 
 ### Return type
 
-[**\LocationIq\Model\Location[]**](../Model/Location.md)
+[**\OpenAPI\Client\Model\Location[]**](../Model/Location.md)
 
 ### Authorization
 
@@ -81,8 +91,10 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
 
