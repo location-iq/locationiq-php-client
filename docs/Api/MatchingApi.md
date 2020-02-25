@@ -1,4 +1,4 @@
-# OpenAPI\Client\MatchingApi
+# LocationIq\MatchingApi
 
 All URIs are relative to *https://eu1.locationiq.com/v1*
 
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## matching
 
-> \OpenAPI\Client\Model\DirectionsMatching matching($coordinates, $generate_hints, $approaches, $exclude, $bearings, $radiuses, $steps, $annotations, $geometries, $overview, $timestamps, $gaps, $tidy, $waypoints)
+> \LocationIq\Model\DirectionsMatching matching($coordinates, $generate_hints, $approaches, $exclude, $bearings, $radiuses, $steps, $annotations, $geometries, $overview, $timestamps, $gaps, $tidy, $waypoints)
 
 Matching Service
 
@@ -24,12 +24,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: key
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
+$config = LocationIq\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
+// $config = LocationIq\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\MatchingApi(
+$apiInstance = new LocationIq\Api\MatchingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DirectionsMatching**](../Model/DirectionsMatching.md)
+[**\LocationIq\Model\DirectionsMatching**](../Model/DirectionsMatching.md)
 
 ### Authorization
 

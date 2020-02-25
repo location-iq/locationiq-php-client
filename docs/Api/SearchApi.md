@@ -1,4 +1,4 @@
-# OpenAPI\Client\SearchApi
+# LocationIq\SearchApi
 
 All URIs are relative to *https://eu1.locationiq.com/v1*
 
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## search
 
-> \OpenAPI\Client\Model\Location[] search($q, $format, $normalizecity, $addressdetails, $viewbox, $bounded, $limit, $accept_language, $countrycodes, $namedetails, $dedupe, $extratags, $statecode, $matchquality, $postaladdress)
+> \LocationIq\Model\Location[] search($q, $format, $normalizecity, $addressdetails, $viewbox, $bounded, $limit, $accept_language, $countrycodes, $namedetails, $dedupe, $extratags, $statecode, $matchquality, $postaladdress)
 
 Forward Geocoding
 
@@ -24,12 +24,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: key
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
+$config = LocationIq\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
+// $config = LocationIq\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\SearchApi(
+$apiInstance = new LocationIq\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\Location[]**](../Model/Location.md)
+[**\LocationIq\Model\Location[]**](../Model/Location.md)
 
 ### Authorization
 

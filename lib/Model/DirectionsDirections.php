@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  LocationIq
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace LocationIq\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \LocationIq\ObjectSerializer;
 
 /**
  * DirectionsDirections Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  LocationIq
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -59,7 +59,7 @@ class DirectionsDirections implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'code' => 'string',
         'waypoints' => 'object[]',
-        'routes' => '\OpenAPI\Client\Model\DirectionsDirectionsRoutes[]'
+        'routes' => '\LocationIq\Model\DirectionsDirectionsRoutes[]'
     ];
 
     /**
@@ -267,7 +267,7 @@ class DirectionsDirections implements ModelInterface, ArrayAccess
     /**
      * Gets routes
      *
-     * @return \OpenAPI\Client\Model\DirectionsDirectionsRoutes[]|null
+     * @return \LocationIq\Model\DirectionsDirectionsRoutes[]|null
      */
     public function getRoutes()
     {
@@ -277,7 +277,7 @@ class DirectionsDirections implements ModelInterface, ArrayAccess
     /**
      * Sets routes
      *
-     * @param \OpenAPI\Client\Model\DirectionsDirectionsRoutes[]|null $routes routes
+     * @param \LocationIq\Model\DirectionsDirectionsRoutes[]|null $routes routes
      *
      * @return $this
      */

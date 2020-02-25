@@ -1,4 +1,4 @@
-# OpenAPI\Client\DirectionsApi
+# LocationIq\DirectionsApi
 
 All URIs are relative to *https://eu1.locationiq.com/v1*
 
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## directions
 
-> \OpenAPI\Client\Model\DirectionsDirections directions($coordinates, $bearings, $radiuses, $generate_hints, $approaches, $exclude, $alternatives, $steps, $annotations, $geometries, $overview, $continue_straight)
+> \LocationIq\Model\DirectionsDirections directions($coordinates, $bearings, $radiuses, $generate_hints, $approaches, $exclude, $alternatives, $steps, $annotations, $geometries, $overview, $continue_straight)
 
 Directions Service
 
@@ -24,12 +24,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: key
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
+$config = LocationIq\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
+// $config = LocationIq\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\DirectionsApi(
+$apiInstance = new LocationIq\Api\DirectionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DirectionsDirections**](../Model/DirectionsDirections.md)
+[**\LocationIq\Model\DirectionsDirections**](../Model/DirectionsDirections.md)
 
 ### Authorization
 

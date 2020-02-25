@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  LocationIq
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace LocationIq\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \LocationIq\ObjectSerializer;
 
 /**
  * Location Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  LocationIq
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -69,9 +69,9 @@ class Location implements ModelInterface, ArrayAccess
         'class' => 'string',
         'type' => 'string',
         'importance' => 'float',
-        'address' => '\OpenAPI\Client\Model\Address',
-        'namedetails' => '\OpenAPI\Client\Model\Namedetails',
-        'matchquality' => '\OpenAPI\Client\Model\Matchquality'
+        'address' => '\LocationIq\Model\Address',
+        'namedetails' => '\LocationIq\Model\Namedetails',
+        'matchquality' => '\LocationIq\Model\Matchquality'
     ];
 
     /**
@@ -579,7 +579,7 @@ class Location implements ModelInterface, ArrayAccess
     /**
      * Gets address
      *
-     * @return \OpenAPI\Client\Model\Address|null
+     * @return \LocationIq\Model\Address|null
      */
     public function getAddress()
     {
@@ -589,7 +589,7 @@ class Location implements ModelInterface, ArrayAccess
     /**
      * Sets address
      *
-     * @param \OpenAPI\Client\Model\Address|null $address address
+     * @param \LocationIq\Model\Address|null $address address
      *
      * @return $this
      */
@@ -603,7 +603,7 @@ class Location implements ModelInterface, ArrayAccess
     /**
      * Gets namedetails
      *
-     * @return \OpenAPI\Client\Model\Namedetails|null
+     * @return \LocationIq\Model\Namedetails|null
      */
     public function getNamedetails()
     {
@@ -613,7 +613,7 @@ class Location implements ModelInterface, ArrayAccess
     /**
      * Sets namedetails
      *
-     * @param \OpenAPI\Client\Model\Namedetails|null $namedetails namedetails
+     * @param \LocationIq\Model\Namedetails|null $namedetails namedetails
      *
      * @return $this
      */
@@ -627,7 +627,7 @@ class Location implements ModelInterface, ArrayAccess
     /**
      * Gets matchquality
      *
-     * @return \OpenAPI\Client\Model\Matchquality|null
+     * @return \LocationIq\Model\Matchquality|null
      */
     public function getMatchquality()
     {
@@ -637,7 +637,7 @@ class Location implements ModelInterface, ArrayAccess
     /**
      * Sets matchquality
      *
-     * @param \OpenAPI\Client\Model\Matchquality|null $matchquality matchquality
+     * @param \LocationIq\Model\Matchquality|null $matchquality matchquality
      *
      * @return $this
      */

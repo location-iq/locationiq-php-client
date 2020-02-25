@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  LocationIq
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace LocationIq\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \LocationIq\ObjectSerializer;
 
 /**
  * DirectionsMatrix Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  LocationIq
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -60,8 +60,8 @@ class DirectionsMatrix implements ModelInterface, ArrayAccess
         'code' => 'string',
         'distances' => 'float[]',
         'fallback_speed_cells' => 'float[]',
-        'sources' => '\OpenAPI\Client\Model\DirectionsMatrixSources[]',
-        'destinations' => '\OpenAPI\Client\Model\DirectionsMatrixSources[]'
+        'sources' => '\LocationIq\Model\DirectionsMatrixSources[]',
+        'destinations' => '\LocationIq\Model\DirectionsMatrixSources[]'
     ];
 
     /**
@@ -303,7 +303,7 @@ class DirectionsMatrix implements ModelInterface, ArrayAccess
     /**
      * Gets sources
      *
-     * @return \OpenAPI\Client\Model\DirectionsMatrixSources[]|null
+     * @return \LocationIq\Model\DirectionsMatrixSources[]|null
      */
     public function getSources()
     {
@@ -313,7 +313,7 @@ class DirectionsMatrix implements ModelInterface, ArrayAccess
     /**
      * Sets sources
      *
-     * @param \OpenAPI\Client\Model\DirectionsMatrixSources[]|null $sources sources
+     * @param \LocationIq\Model\DirectionsMatrixSources[]|null $sources sources
      *
      * @return $this
      */
@@ -327,7 +327,7 @@ class DirectionsMatrix implements ModelInterface, ArrayAccess
     /**
      * Gets destinations
      *
-     * @return \OpenAPI\Client\Model\DirectionsMatrixSources[]|null
+     * @return \LocationIq\Model\DirectionsMatrixSources[]|null
      */
     public function getDestinations()
     {
@@ -337,7 +337,7 @@ class DirectionsMatrix implements ModelInterface, ArrayAccess
     /**
      * Sets destinations
      *
-     * @param \OpenAPI\Client\Model\DirectionsMatrixSources[]|null $destinations destinations
+     * @param \LocationIq\Model\DirectionsMatrixSources[]|null $destinations destinations
      *
      * @return $this
      */

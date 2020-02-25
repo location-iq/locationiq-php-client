@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 **class** | **string** |  | [optional] 
 **type** | **string** |  | [optional] 
 **importance** | **float** |  | [optional] 
-**address** | [**\OpenAPI\Client\Model\Address**](Address.md) |  | [optional] 
-**namedetails** | [**\OpenAPI\Client\Model\Namedetails**](Namedetails.md) |  | [optional] 
-**matchquality** | [**\OpenAPI\Client\Model\Matchquality**](Matchquality.md) |  | [optional] 
+**address** | [**\LocationIq\Model\Address**](Address.md) |  | [optional] 
+**namedetails** | [**\LocationIq\Model\Namedetails**](Namedetails.md) |  | [optional] 
+**matchquality** | [**\LocationIq\Model\Matchquality**](Matchquality.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

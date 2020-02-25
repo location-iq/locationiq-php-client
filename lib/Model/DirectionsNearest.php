@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  LocationIq
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace LocationIq\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \LocationIq\ObjectSerializer;
 
 /**
  * DirectionsNearest Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  LocationIq
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -58,7 +58,7 @@ class DirectionsNearest implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'code' => 'string',
-        'waypoints' => '\OpenAPI\Client\Model\DirectionsNearestWaypoints[]'
+        'waypoints' => '\LocationIq\Model\DirectionsNearestWaypoints[]'
     ];
 
     /**
@@ -237,7 +237,7 @@ class DirectionsNearest implements ModelInterface, ArrayAccess
     /**
      * Gets waypoints
      *
-     * @return \OpenAPI\Client\Model\DirectionsNearestWaypoints[]|null
+     * @return \LocationIq\Model\DirectionsNearestWaypoints[]|null
      */
     public function getWaypoints()
     {
@@ -247,7 +247,7 @@ class DirectionsNearest implements ModelInterface, ArrayAccess
     /**
      * Sets waypoints
      *
-     * @param \OpenAPI\Client\Model\DirectionsNearestWaypoints[]|null $waypoints waypoints
+     * @param \LocationIq\Model\DirectionsNearestWaypoints[]|null $waypoints waypoints
      *
      * @return $this
      */

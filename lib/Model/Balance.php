@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  LocationIq
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace LocationIq\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \LocationIq\ObjectSerializer;
 
 /**
  * Balance Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  LocationIq
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -58,7 +58,7 @@ class Balance implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'balance' => '\OpenAPI\Client\Model\Daybalance'
+        'balance' => '\LocationIq\Model\Daybalance'
     ];
 
     /**
@@ -237,7 +237,7 @@ class Balance implements ModelInterface, ArrayAccess
     /**
      * Gets balance
      *
-     * @return \OpenAPI\Client\Model\Daybalance|null
+     * @return \LocationIq\Model\Daybalance|null
      */
     public function getBalance()
     {
@@ -247,7 +247,7 @@ class Balance implements ModelInterface, ArrayAccess
     /**
      * Sets balance
      *
-     * @param \OpenAPI\Client\Model\Daybalance|null $balance balance
+     * @param \LocationIq\Model\Daybalance|null $balance balance
      *
      * @return $this
      */
