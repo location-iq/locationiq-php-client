@@ -1,8 +1,10 @@
-# Location
+# # Location
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**distance** | **float** |  | [optional] 
 **place_id** | **string** |  | [optional] 
 **licence** | **string** |  | [optional] 
 **osm_type** | **string** |  | [optional] 
@@ -16,7 +18,8 @@ Name | Type | Description | Notes
 **importance** | **float** |  | [optional] 
 **address** | [**\LocationIq\Model\Address**](Address.md) |  | [optional] 
 **namedetails** | [**\LocationIq\Model\Namedetails**](Namedetails.md) |  | [optional] 
+**matchquality** | [**\LocationIq\Model\Matchquality**](Matchquality.md) |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
 
